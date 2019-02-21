@@ -1,0 +1,7 @@
+inherit_gem:
+  carwow_rubocop:
+    - default.yml
+
+Naming/FileName:
+  Exclude:
+    - lib/tenios-api.rb
