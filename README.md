@@ -1,8 +1,8 @@
 # Tenios API Client ☎️
 
-Get Call Detail Records (CDRs) from [Tenios API].
+HTTP client for [Tenios API].
 
-[Tenios API]: https://www.tenios.de/en/doc/api-cdr-request
+[Tenios API]: https://www.tenios.de/doc-topic/voice-api
 
 ## Installation
 
@@ -18,8 +18,14 @@ gem 'tenios-api'
 require 'tenios-api'
 
 client = Tenios::API::Client.new(access_key: ENV['TENIOS_ACCESS_KEY'])
+```
 
-client.cdrs(Time.new(2019, 2, 1)..Time.new(2019, 2, 2))
+### Call Detail Records
+
+[Tenios documentation](https://www.tenios.de/en/doc/api-cdr-request)
+
+```ruby
+client.cdrs.retrieve(Time.utc(2019, 2, 1)..Time.utc(2019, 2, 2))
 # returns lazy Enumerator with the records
 ```
 
