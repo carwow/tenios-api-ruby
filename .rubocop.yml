@@ -5,3 +5,6 @@ inherit_gem:
 Naming/FileName:
   Exclude:
     - lib/tenios-api.rb
+
+RSpec/VerifiedDoubles:
+  Enabled: false
