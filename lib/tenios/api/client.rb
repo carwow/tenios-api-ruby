@@ -4,8 +4,6 @@ require 'faraday_middleware'
 
 module Tenios
   module API
-    autoload :CallDetailRecords, 'tenios/api/call_detail_records'
-
     class Client
       attr_reader :access_key
 
@@ -24,10 +22,22 @@ module Tenios
         end
       end
 
-      def call_detail_records
-        @call_detail_records ||= CallDetailRecords.new(self)
+      class <<self
+        private
+
+        def endpoint(name, klass)
+          API.autoload klass, "tenios/api/#{name}"
+
+          class_eval <<~RUBY, __FILE__, __LINE__ + 1
+            def #{name}
+              @#{name} ||= #{klass}.new(self)
+            end
+          RUBY
+        end
       end
-      alias cdrs call_detail_records
+
+      endpoint :call_detail_records, :CallDetailRecords
+      endpoint :verification, :Verification
     end
   end
 end

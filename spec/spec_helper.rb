@@ -1,4 +1,5 @@
 require 'tenios-api'
+require 'pry'
 
 RSpec.configure do |config|
   Kernel.srand config.seed

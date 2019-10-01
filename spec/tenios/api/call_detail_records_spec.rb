@@ -1,16 +1,12 @@
-require 'tenios/api/call_detail_records'
-
 module Tenios
   module API
-    RSpec.describe CallDetailRecords do
-      subject(:call_detail_records) { described_class.new(client) }
+    RSpec.describe Client, '#call_detail_records' do
+      subject(:call_detail_records) { client.call_detail_records }
 
-      let(:client) { Client.new(access_key: 'test') }
+      let(:client) { described_class.new(access_key: 'test') }
 
       describe '#retrieve' do
-        subject(:retrieve) do
-          call_detail_records.retrieve(date_range)
-        end
+        subject(:retrieve) { call_detail_records.retrieve(date_range) }
 
         let(:date_range) { Time.utc(2019, 9, 30)..Time.utc(2019, 10, 1) }
         let(:response) do
@@ -30,15 +26,13 @@ module Tenios
           ]
         end
 
-        before do
-          allow(client.http_client).to receive(:post).and_return(response)
-        end
+        before { allow(client.http_client).to receive(:post).and_return(response) }
 
         it { expect(retrieve).to be_a(Enumerator::Lazy) }
         it { expect(retrieve.count).to eq(1) }
         it { expect(retrieve.to_a).to eq([record]) }
 
-        context 'expectations' do
+        context 'HTTP requests' do
           before { retrieve.count }
 
           it { expect(client.http_client).to have_received(:post).once }

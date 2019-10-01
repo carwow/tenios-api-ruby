@@ -9,14 +9,14 @@ module Tenios
 
       def retrieve(date_range, page_size: 100)
         stream do |page|
-          payload = payload_for_cdrs(date_range, page: page, page_size: page_size)
+          payload = build_payload(date_range, page: page, page_size: page_size)
           client.http_client.post('/cdrs/retrieve', payload).body
         end
       end
 
       private
 
-      def payload_for_cdrs(date_range, page:, page_size:)
+      def build_payload(date_range, page:, page_size:)
         expect_date_range! date_range
 
         {

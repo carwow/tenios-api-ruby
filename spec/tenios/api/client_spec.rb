@@ -8,6 +8,12 @@ module Tenios
 
         it { expect(call_detail_records).to be_a(CallDetailRecords) }
       end
+
+      describe '#verification' do
+        subject(:verification) { client.verification }
+
+        it { expect(verification).to be_a(Verification) }
+      end
     end
   end
 end
