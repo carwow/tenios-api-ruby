@@ -8,3 +8,6 @@ Naming/FileName:
 
 RSpec/VerifiedDoubles:
   Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: true

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Tenios
   module API
     RSpec.describe Client, '#number' do
@@ -12,7 +14,7 @@ module Tenios
         let(:expected_payload) do
           [
             '/number/order',
-            { access_key: 'test', number_type: 'GEOGRAPHICAL' }
+            { access_key: 'test', number_type: Number::GEOGRAPHICAL }
               .merge(options)
               .to_json
           ]

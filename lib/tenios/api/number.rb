@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Tenios
   module API
     class Number
@@ -7,9 +9,11 @@ module Tenios
         @client = client
       end
 
-      NUMBER_TYPES = %w[GEOGRAPHICAL].freeze
+      NUMBER_TYPES = [
+        GEOGRAPHICAL = 'GEOGRAPHICAL'
+      ].freeze
 
-      def order(verification_id:, number_type: NUMBER_TYPES.first, **options)
+      def order(verification_id:, number_type: GEOGRAPHICAL, **options)
         payload = build_payload(verification_id: verification_id, number_type: number_type, **options)
         client.http_client.post('/number/order', payload).body
       end

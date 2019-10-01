@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Tenios
   module API
     RSpec.describe Client, '#call_detail_records' do

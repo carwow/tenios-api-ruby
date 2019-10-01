@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Tenios
   module API
     RSpec.describe Client, '#verification' do
