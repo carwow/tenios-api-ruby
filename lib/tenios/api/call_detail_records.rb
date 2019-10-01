@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Tenios
   module API
     class CallDetailRecords
@@ -25,7 +27,7 @@ module Tenios
           start_date_to: format_datetime(date_range.end),
           page: page,
           page_size: page_size
-        }.to_json
+        }
       end
 
       def expect_date_range!(date_range)

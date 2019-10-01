@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'json'
 require 'faraday'
 require 'faraday_middleware'
@@ -38,6 +40,7 @@ module Tenios
 
       endpoint :call_detail_records, :CallDetailRecords
       endpoint :verification, :Verification
+      endpoint :number, :Number
     end
   end
 end

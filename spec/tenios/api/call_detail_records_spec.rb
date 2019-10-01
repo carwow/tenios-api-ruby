@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Tenios
   module API
     RSpec.describe Client, '#call_detail_records' do
@@ -22,7 +24,7 @@ module Tenios
               start_date_to: '2019-10-01T00:00:00.0Z',
               page: 1,
               page_size: 100
-            }.to_json
+            }
           ]
         end
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Tenios
   module API
     RSpec.describe Client, '#verification' do
@@ -20,7 +22,7 @@ module Tenios
           }
         end
         let(:options) { valid_options }
-        let(:expected_payload) { ['/verification/create', { access_key: 'test' }.merge(options).to_json] }
+        let(:expected_payload) { ['/verification/create', options.merge(access_key: 'test')] }
         let(:response) { double(body: response_body) }
         let(:response_body) { { 'verification_id' => 'CODE' } }
 
@@ -32,6 +34,20 @@ module Tenios
           before { create }
 
           it { expect(client.http_client).to have_received(:post).with(*expected_payload) }
+
+          context 'ignores extra options' do
+            let(:options) { valid_options.merge(ignored: 'ignored') }
+            let(:expected_payload) do
+              [
+                '/verification/create',
+                options
+                  .merge(access_key: 'test')
+                  .reject { |name| name == :ignored }
+              ]
+            end
+
+            it { expect(client.http_client).to have_received(:post).with(*expected_payload) }
+          end
         end
 
         context 'requires all options' do
