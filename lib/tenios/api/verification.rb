@@ -1,3 +1,5 @@
+require 'base64'
+
 module Tenios
   module API
     class Verification
@@ -55,6 +57,15 @@ module Tenios
         return if DOCUMENT_TYPES.include? type
 
         raise ArgumentError, "invalid document_type: #{type}"
+      end
+
+      PDF_FILE_SIGNATURE = '%PDF-'.freeze
+      private_constant :PDF_FILE_SIGNATURE
+
+      def validate_document_data!(data)
+        return if Base64.decode64(data).start_with? PDF_FILE_SIGNATURE
+
+        raise ArgumentError, 'invalid document_data: should be a base64 encoded pdf file'
       end
     end
   end

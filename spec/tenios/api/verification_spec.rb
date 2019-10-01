@@ -13,7 +13,7 @@ module Tenios
             area_code: '20',
             city: 'London',
             country: 'UK',
-            document_data: '%PDF-',
+            document_data: Base64.encode64('%PDF-1.3'),
             document_type: Verification::DOCUMENT_TYPES.sample,
             house_number: '10',
             street: 'Downing Street'
@@ -44,6 +44,26 @@ module Tenios
           let(:options) { valid_options.merge(document_type: 'invalid') }
 
           it { expect { create }.to raise_error ArgumentError, 'invalid document_type: invalid' }
+        end
+
+        context 'validates document_data' do
+          let(:options) { valid_options.merge(document_data: document_data) }
+
+          context 'should be a PDF' do
+            let(:document_data) { Base64.encode64('invalid') }
+
+            it { expect { create }.to raise_error ArgumentError, <<~ERR.strip }
+              invalid document_data: should be a base64 encoded pdf file
+            ERR
+          end
+
+          context 'should be base64' do
+            let(:document_data) { 'invalid' }
+
+            it { expect { create }.to raise_error ArgumentError, <<~ERR.strip }
+              invalid document_data: should be a base64 encoded pdf file
+            ERR
+          end
         end
       end
     end
