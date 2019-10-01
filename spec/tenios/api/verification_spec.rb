@@ -32,6 +32,20 @@ module Tenios
           before { create }
 
           it { expect(client.http_client).to have_received(:post).with(*expected_payload) }
+
+          context 'ignores extra options' do
+            let(:options) { valid_options.merge(ignored: 'ignored') }
+            let(:expected_payload) do
+              [
+                '/verification/create',
+                { access_key: 'test' }
+                  .merge(options.reject { |name| name == :ignored })
+                  .to_json
+              ]
+            end
+
+            it { expect(client.http_client).to have_received(:post).with(*expected_payload) }
+          end
         end
 
         context 'requires all options' do
