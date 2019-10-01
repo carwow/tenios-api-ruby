@@ -32,7 +32,7 @@ module Tenios
         it { expect(retrieve.count).to eq(1) }
         it { expect(retrieve.to_a).to eq([record]) }
 
-        context 'expectations' do
+        context 'HTTP requests' do
           before { retrieve.count }
 
           it { expect(client.http_client).to have_received(:post).once }
