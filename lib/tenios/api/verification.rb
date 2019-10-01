@@ -59,11 +59,11 @@ module Tenios
         raise ArgumentError, "invalid document_type: #{type}"
       end
 
-      PDF_FILE_SIGNATURE = '%PDF-'.freeze
+      PDF_FILE_SIGNATURE = Base64.encode64('%PDF-')[0..6].freeze
       private_constant :PDF_FILE_SIGNATURE
 
       def validate_document_data!(data)
-        return if Base64.decode64(data).start_with? PDF_FILE_SIGNATURE
+        return if data.start_with? PDF_FILE_SIGNATURE
 
         raise ArgumentError, 'invalid document_data: should be a base64 encoded pdf file'
       end
