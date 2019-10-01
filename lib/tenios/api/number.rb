@@ -29,10 +29,10 @@ module Tenios
       ].freeze
       private_constant :OPTIONS
 
-      def build_payload(options)
-        { access_key: client.access_key }
-          .merge(options.slice(*OPTIONS))
-          .to_json
+      def build_payload(**options)
+        options
+          .slice(*OPTIONS)
+          .merge(access_key: client.access_key)
       end
     end
   end

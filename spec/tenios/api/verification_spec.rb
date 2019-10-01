@@ -22,7 +22,7 @@ module Tenios
           }
         end
         let(:options) { valid_options }
-        let(:expected_payload) { ['/verification/create', { access_key: 'test' }.merge(options).to_json] }
+        let(:expected_payload) { ['/verification/create', options.merge(access_key: 'test')] }
         let(:response) { double(body: response_body) }
         let(:response_body) { { 'verification_id' => 'CODE' } }
 
@@ -40,9 +40,9 @@ module Tenios
             let(:expected_payload) do
               [
                 '/verification/create',
-                { access_key: 'test' }
-                  .merge(options.reject { |name| name == :ignored })
-                  .to_json
+                options
+                  .merge(access_key: 'test')
+                  .reject { |name| name == :ignored }
               ]
             end
 

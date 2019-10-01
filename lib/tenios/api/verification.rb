@@ -41,9 +41,8 @@ module Tenios
       def build_payload(options)
         to_option = build_option(options)
 
-        { access_key: client.access_key }
-          .merge(OPTIONS.map(&to_option).to_h)
-          .to_json
+        OPTIONS.map(&to_option).to_h
+          .merge(access_key: client.access_key)
       end
 
       def build_option(options)

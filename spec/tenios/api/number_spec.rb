@@ -14,9 +14,8 @@ module Tenios
         let(:expected_payload) do
           [
             '/number/order',
-            { access_key: 'test', number_type: Number::GEOGRAPHICAL }
-              .merge(options)
-              .to_json
+            options
+              .merge(access_key: 'test', number_type: Number::GEOGRAPHICAL)
           ]
         end
         let(:response) { double(body: response_body) }
@@ -45,9 +44,9 @@ module Tenios
             let(:expected_payload) do
               [
                 '/number/order',
-                { access_key: 'test' }
-                .merge(options.reject { |name| name == :ignored })
-                .to_json
+                options
+                  .merge(access_key: 'test')
+                  .reject { |name| name == :ignored }
               ]
             end
 
