@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    tenios-api (0.2.0)
+    tenios-api (0.2.1)
       faraday
       faraday_middleware
 
