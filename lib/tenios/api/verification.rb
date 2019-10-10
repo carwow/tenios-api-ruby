@@ -35,6 +35,7 @@ module Tenios
         document_type
         house_number
         street
+        zip
       ].freeze
       private_constant :OPTIONS
 
