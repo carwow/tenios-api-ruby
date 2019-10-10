@@ -18,7 +18,8 @@ module Tenios
             document_data: Base64.encode64('%PDF-1.3'),
             document_type: Verification::DOCUMENT_TYPES.sample,
             house_number: '10',
-            street: 'Downing Street'
+            street: 'Downing Street',
+            zip: 'W1'
           }
         end
         let(:options) { valid_options }
