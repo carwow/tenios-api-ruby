@@ -41,6 +41,7 @@ module Tenios
       endpoint :call_detail_records, :CallDetailRecords
       endpoint :verification, :Verification
       endpoint :number, :Number
+      endpoint :record_call, :RecordCall
     end
   end
 end
