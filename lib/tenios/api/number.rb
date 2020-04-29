@@ -14,24 +14,29 @@ module Tenios
       ].freeze
 
       def order(verification_id:, number_type: GEOGRAPHICAL, **options)
-        payload = build_payload(verification_id: verification_id, number_type: number_type, **options)
+        payload = order_payload(verification_id: verification_id, number_type: number_type, **options)
         client.http_client.post('/number/order', payload).body
+      end
+
+      def cancel(phone_number:)
+        payload = { access_key: client.access_key, phone_number: phone_number }
+        client.http_client.post('/number/cancel', payload).body
       end
 
       private
 
-      OPTIONS = %i[
+      ORDER_OPTIONS = %i[
         link_to_number
         number_type
         push_secret
         push_url
         verification_id
       ].freeze
-      private_constant :OPTIONS
+      private_constant :ORDER_OPTIONS
 
-      def build_payload(**options)
+      def order_payload(**options)
         options
-          .slice(*OPTIONS)
+          .slice(*ORDER_OPTIONS)
           .merge(access_key: client.access_key)
       end
     end

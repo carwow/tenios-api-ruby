@@ -54,6 +54,26 @@ module Tenios
           end
         end
       end
+
+      describe '#cancel' do
+        subject(:cancel) { number.cancel(phone_number: '+49888888') }
+
+        let(:expected_payload) do
+          ['/number/cancel', { access_key: 'test', phone_number: '+49888888' }]
+        end
+        let(:response) { double(body: response_body) }
+        let(:response_body) { { 'cancellation_date' => '2019-01-01' } }
+
+        before { allow(client.http_client).to receive(:post).and_return(response) }
+
+        it { expect(cancel).to eq response_body }
+
+        context 'HTTP requests' do
+          before { cancel }
+
+          it { expect(client.http_client).to have_received(:post).with(*expected_payload) }
+        end
+      end
     end
   end
 end
