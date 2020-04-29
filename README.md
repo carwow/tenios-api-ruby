@@ -24,6 +24,8 @@ client = Tenios::API::Client.new(access_key: ENV['TENIOS_ACCESS_KEY'])
 
 [Tenios documentation](https://www.tenios.de/en/doc/api-cdr-request)
 
+#### Retrive
+
 ```ruby
 client.cdrs.retrieve(Time.utc(2019, 2, 1)..Time.utc(2019, 2, 2))
 # returns lazy Enumerator with the records
@@ -33,10 +35,42 @@ client.cdrs.retrieve(Time.utc(2019, 2, 1)..Time.utc(2019, 2, 2))
 
 [Tenios documentation](https://www.tenios.de/en/doc/api-number-order)
 
+#### Verification
+
 ```ruby
 # check Tenios documentation for verification options
 verification_id = client.verification.create(options)['verification_id']
+```
+
+#### Order
+
+```ruby
 order_id = client.number.order(verification_id: verification_id)['order_id']
+```
+
+#### Cancel
+
+```ruby
+client.number.cancel(phone_number: '+49888888')
+```
+
+### Record Call
+
+[Tenios documentation](https://www.tenios.de/en/doc/api-call-recording)
+
+#### Start
+
+```ruby
+recording_uuid = client.record_call.start(call_uuid: '9315b018-86bd-424f-a086-7095ce427130')['recording_uuid']
+```
+
+#### Stop
+
+```ruby
+client.record_call.stop(
+  call_uuid: '9315b018-86bd-424f-a086-7095ce427130',
+  recording_uuid: recording_uuid
+)
 ```
 
 ## Contributing
