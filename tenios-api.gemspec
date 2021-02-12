@@ -1,37 +1,33 @@
 # frozen_string_literal: true
 
-lib = File.expand_path('lib', __dir__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'tenios/api/version'
+require_relative "lib/tenios/api/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = 'tenios-api'
-  spec.version       = Tenios::API::VERSION
-  spec.authors       = ['carwow Developers']
-  spec.email         = ['developers@carwow.co.uk']
-  spec.summary       = 'Tenios API Client ☎️'
-  spec.description   = 'Get Call Detail Records (CDRs) from Tenios API.'
-  spec.homepage      = 'https://github.com/carwow/tenios-api-ruby'
-  spec.license       = 'MIT'
+  spec.name = "tenios-api"
+  spec.version = Tenios::API::VERSION
+  spec.authors = ["carwow Developers"]
+  spec.email = ["developers@carwow.co.uk"]
+  spec.summary = "Tenios API Client ☎️"
+  spec.description = "Get Call Detail Records (CDRs) from Tenios API."
+  spec.homepage = "https://github.com/carwow/tenios-api-ruby"
+  spec.license = "MIT"
 
-  if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = 'https://rubygems.org'
-  else
-    raise 'RubyGems 2.0 or newer is required to protect against ' \
-      'public gem pushes.'
-  end
+  spec.required_ruby_version = Gem::Requirement.new("~> 2.7")
 
-  spec.files = Dir.chdir(File.expand_path(__dir__)) do
-    `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
-  end
-  spec.require_paths = ['lib']
+  spec.metadata["allowed_push_host"] = "https://rubygems.org"
+  spec.metadata["source_code_uri"] = spec.homepage
+  spec.metadata["homepage_uri"] = "#{spec.homepage}/README.md"
+  spec.metadata["changelog_uri"] = "#{spec.homepage}/CHANGELOG.md"
 
-  spec.add_dependency 'faraday'
-  spec.add_dependency 'faraday_middleware'
+  spec.files = `git ls-files -z`.split("\x0").reject { |f| f.start_with? "spec" }
+  spec.require_paths = ["lib"]
 
-  spec.add_development_dependency 'bundler'
-  spec.add_development_dependency 'carwow_rubocop'
-  spec.add_development_dependency 'pry'
-  spec.add_development_dependency 'rake'
-  spec.add_development_dependency 'rspec'
+  spec.add_dependency "faraday", "~> 1.3"
+  spec.add_dependency "faraday_middleware", "~> 1.0"
+  spec.add_dependency "zeitwerk", "~> 2.4"
+
+  spec.add_development_dependency "pry", "~> 0.14"
+  spec.add_development_dependency "rake", "~> 13.0"
+  spec.add_development_dependency "rspec", "~> 3.10"
+  spec.add_development_dependency "standard", "~> 0.12"
 end

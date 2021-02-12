@@ -10,20 +10,11 @@ module Tenios
       end
 
       def start(call_uuid:)
-        client.http_client.post(
-          '/record-call/start',
-          access_key: client.access_key,
-          call_uuid: call_uuid
-        ).body
+        client.post("/record-call/start", call_uuid: call_uuid)
       end
 
       def stop(recording_uuid:, call_uuid:)
-        client.http_client.post(
-          '/record-call/stop',
-          access_key: client.access_key,
-          call_uuid: call_uuid,
-          recording_uuid: recording_uuid
-        ).body
+        client.post("/record-call/stop", call_uuid: call_uuid, recording_uuid: recording_uuid)
       end
     end
   end

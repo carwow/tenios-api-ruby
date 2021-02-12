@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require 'tenios-api'
-require 'pry'
+require "tenios-api"
+require "pry"
 
 RSpec.configure do |config|
   Kernel.srand config.seed
-  config.default_formatter = 'doc' if config.files_to_run.one?
+  config.default_formatter = "doc" if config.files_to_run.one?
   config.disable_monkey_patching!
-  config.example_status_persistence_file_path = '.rspec_status'
+  config.example_status_persistence_file_path = ".rspec_status"
   config.filter_run_when_matching :focus
   config.order = :random
   config.profile_examples = 1
