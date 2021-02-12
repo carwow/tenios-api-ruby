@@ -1,54 +1,36 @@
-ruby: &ruby
-  image: carwow/ruby-ci:2.6
-
-version: 2
+version: 2.1
 
 jobs:
-  bundle:
-    working_directory: ~/tenios-api
-    docker:
-      - *ruby
+  test:
+    parameters:
+      ruby_version:
+        type: string
+    executor:
+      docker:
+        image: cimg/ruby-ci:<< parameters.ruby_version >>
     steps:
       - checkout
       - restore_cache:
-          keys:
-            - bundle-{{ checksum "Gemfile.lock" }}
-            - bundle-
-      - run: |
-          bundle config --local path vendor/bundle &&
-          bundle check || bundle install --jobs=4 --retry=3
+          keys: 
+            - bundle
+      - run:
+          name: bundle install
+          command: |
+            bundle config --local path vendor/bundle
+            bundle check || bundle install --jobs=4 --retry=3
+            bundle clean --force
       - save_cache:
-          key: bundle-{{ checksum "Gemfile.lock" }}
-          paths: [~/tenios-api/vendor/bundle]
-      - persist_to_workspace:
-          root: '~'
-          paths: [tenios-api]
-
-  rubocop:
-    working_directory: ~/tenios-api
-    docker:
-      - *ruby
-    steps:
-      - attach_workspace:
-          at: '~'
-      - run: bundle exec rubocop
-
-  tests:
-    working_directory: ~/tenios-api
-    docker:
-      - *ruby
-    steps:
-      - attach_workspace:
-          at: '~'
-      - run: |
-          bundle exec rspec
+          key: bundle
+          paths: [~/project/vendor/bundle]
+      - run: bundle exec rake
 
 workflows:
   version: 2
-  build:
+  test:
     jobs:
-      - bundle
-      - rubocop:
-          requires: [bundle]
-      - tests:
-          requires: [bundle]
+      - test:
+          matrix:
+            parameters:
+              ruby_version:
+                - "2.7"
+                - "3.0"

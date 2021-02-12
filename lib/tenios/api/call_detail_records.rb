@@ -12,7 +12,7 @@ module Tenios
       def retrieve(date_range, page_size: 100)
         stream do |page|
           payload = build_payload(date_range, page: page, page_size: page_size)
-          client.http_client.post('/cdrs/retrieve', payload).body
+          client.post("/cdrs/retrieve", payload)
         end
       end
 
@@ -22,7 +22,6 @@ module Tenios
         expect_date_range! date_range
 
         {
-          access_key: client.access_key,
           start_date_from: format_datetime(date_range.begin),
           start_date_to: format_datetime(date_range.end),
           page: page,
@@ -39,17 +38,17 @@ module Tenios
       end
 
       def format_datetime(time)
-        time.utc.strftime('%FT%H:%M:%S.0Z')
+        time.utc.strftime("%FT%H:%M:%S.0Z")
       end
 
       def stream
-        Enumerator.new do |records|
+        Enumerator.new { |records|
           (1..Float::INFINITY).each do |page|
             res = yield page
-            res['items'].each { |item| records << item }
-            break if res['total_items'] <= page * res['page_size']
+            res["items"].each { |item| records << item }
+            break if res["total_items"] <= page * res["page_size"]
           end
-        end.lazy
+        }.lazy
       end
     end
   end

@@ -10,17 +10,16 @@ module Tenios
       end
 
       NUMBER_TYPES = [
-        GEOGRAPHICAL = 'GEOGRAPHICAL'
+        GEOGRAPHICAL = "GEOGRAPHICAL"
       ].freeze
 
       def order(verification_id:, number_type: GEOGRAPHICAL, **options)
         payload = order_payload(verification_id: verification_id, number_type: number_type, **options)
-        client.http_client.post('/number/order', payload).body
+        client.post("/number/order", **payload)
       end
 
       def cancel(phone_number:)
-        payload = { access_key: client.access_key, phone_number: phone_number }
-        client.http_client.post('/number/cancel', payload).body
+        client.post("/number/cancel", phone_number: phone_number)
       end
 
       private
@@ -35,9 +34,7 @@ module Tenios
       private_constant :ORDER_OPTIONS
 
       def order_payload(**options)
-        options
-          .slice(*ORDER_OPTIONS)
-          .merge(access_key: client.access_key)
+        options.slice(*ORDER_OPTIONS)
       end
     end
   end
