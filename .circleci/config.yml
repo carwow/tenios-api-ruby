@@ -5,19 +5,18 @@ jobs:
     parameters:
       ruby_version:
         type: string
-    executor:
-      docker:
-        image: cimg/ruby-ci:<< parameters.ruby_version >>
+    docker:
+      - image: cimg/ruby-ci:<< parameters.ruby_version >>
     steps:
       - checkout
       - restore_cache:
           keys: 
             - bundle
       - run:
-          name: bundle install
+          name: bundle update
           command: |
             bundle config --local path vendor/bundle
-            bundle check || bundle install --jobs=4 --retry=3
+            bundle update --jobs=4 --retry=3
             bundle clean --force
       - save_cache:
           key: bundle
