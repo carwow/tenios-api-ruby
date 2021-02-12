@@ -2,8 +2,8 @@
 
 ### Changed
 
-* Tenios API URL to: https://api.tenios.com
-* Ruby >= 2.7
+* Tenios API URL is now https://api.tenios.com
+* Ruby ~> 2.7
 
 ### Misc
 
