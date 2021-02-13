@@ -16,8 +16,8 @@ Gem::Specification.new do |spec|
 
   spec.metadata["allowed_push_host"] = "https://rubygems.org"
   spec.metadata["source_code_uri"] = spec.homepage
-  spec.metadata["homepage_uri"] = "#{spec.homepage}/README.md"
-  spec.metadata["changelog_uri"] = "#{spec.homepage}/CHANGELOG.md"
+  spec.metadata["homepage_uri"] = "#{spec.homepage}/blob/main/README.md"
+  spec.metadata["changelog_uri"] = "#{spec.homepage}/blob/main/CHANGELOG.md"
 
   spec.files = `git ls-files -z`.split("\x0").reject { |f| f.start_with? "spec" }
   spec.require_paths = ["lib"]
