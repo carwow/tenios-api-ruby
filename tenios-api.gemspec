@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.authors = ["carwow Developers"]
   spec.email = ["developers@carwow.co.uk"]
   spec.summary = "Tenios API Client ☎️"
-  spec.description = "Get Call Detail Records (CDRs) from Tenios API."
+  spec.description = "Ruby client for Tenios API."
   spec.homepage = "https://github.com/carwow/tenios-api-ruby"
   spec.license = "MIT"
 

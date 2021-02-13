@@ -1,6 +1,6 @@
 # Tenios API Client ☎️
 
-HTTP client for [Tenios API].
+Ruby client for [Tenios API].
 
 [Tenios API]: https://www.tenios.de/doc-topic/voice-api
 
