@@ -28,7 +28,7 @@ module Tenios
         before { allow(Faraday).to receive(:new).and_return(http_client) }
 
         it "returns response body and calls http_client#post with access_key" do
-          expect(client.post("path", {param: "param"})).to eq("body")
+          expect(client.post("path", param: "param")).to eq("body")
 
           expect(http_client).to have_received(:post)
             .with("path", {param: "param", access_key: "test"})

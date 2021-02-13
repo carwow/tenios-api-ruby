@@ -8,7 +8,7 @@ module Tenios
       let(:client) { described_class.new(access_key: "test") }
 
       describe "#order" do
-        subject(:order) { number.order(options) }
+        subject(:order) { number.order(**options) }
 
         let(:options) { {verification_id: "CODE"} }
         let(:expected_payload) do
