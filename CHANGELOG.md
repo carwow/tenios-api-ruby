@@ -1,9 +1,27 @@
-## [1.0.0]
+## [Unreleased]
+
+### Added
+### Changed
+### Deprecated
+### Removed
+### Fixed
+### Security
+### Misc
+
+## [1.0.1] - 2020-02-13
+
+### Added
+
+* Ruby 3.0 support
+
+[1.0.1]: https://github.com/carwow/deals_service_client/compare/v1.0.0...v1.0.1
+
+## [1.0.0] - 2020-02-12
 
 ### Changed
 
 * Tenios API URL is now https://api.tenios.com
-* Ruby ~> 2.7
+* Ruby ~> 2.7 support
 
 ### Misc
 

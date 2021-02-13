@@ -10,8 +10,9 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: 
-            - bundle
+          keys:
+            - bundle-ruby-<< parameters.ruby_version >>-{{ checksum "tenios-api.gemspec" }}
+            - bundle-ruby-<< parameters.ruby_version >>
       - run:
           name: bundle update
           command: |
@@ -19,7 +20,7 @@ jobs:
             bundle update --jobs=4 --retry=3
             bundle clean --force
       - save_cache:
-          key: bundle
+          key: bundle-ruby-<< parameters.ruby_version >>-{{ checksum "tenios-api.gemspec" }}
           paths: [~/project/vendor/bundle]
       - run: bundle exec rake
 
@@ -32,3 +33,4 @@ workflows:
             parameters:
               ruby_version:
                 - "2.7"
+                - "3.0"

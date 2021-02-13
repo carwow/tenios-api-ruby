@@ -8,7 +8,7 @@ module Tenios
       let(:client) { described_class.new(access_key: "test") }
 
       describe "#create" do
-        subject(:create) { verification.create(options) }
+        subject(:create) { verification.create(**options) }
 
         let(:valid_options) do
           {
