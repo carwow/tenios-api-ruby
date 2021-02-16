@@ -14,21 +14,24 @@ module Tenios
         @http_client = build_http_client(url)
       end
 
-      def call_detail_records
-        CallDetailRecords.new(self)
+      class <<self
+        private
+
+        def endpoint(name, klass)
+          API.autoload klass, "tenios/api/#{name}"
+
+          class_eval <<~RUBY, __FILE__, __LINE__ + 1
+            def #{name}
+              @#{name} ||= #{klass}.new(self)
+            end
+          RUBY
+        end
       end
 
-      def verification
-        Verification.new(self)
-      end
-
-      def number
-        Number.new(self)
-      end
-
-      def record_call
-        RecordCall.new(self)
-      end
+      endpoint :call_detail_records, :CallDetailRecords
+      endpoint :verification, :Verification
+      endpoint :number, :Number
+      endpoint :record_call, :RecordCall
 
       # @api private
       def post(path, **payload)

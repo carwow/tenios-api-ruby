@@ -24,7 +24,6 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "faraday", "~> 1.3"
   spec.add_dependency "faraday_middleware", "~> 1.0"
-  spec.add_dependency "zeitwerk", "~> 2.4"
 
   spec.add_development_dependency "pry", "~> 0.14"
   spec.add_development_dependency "rake", "~> 13.0"

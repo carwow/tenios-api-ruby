@@ -8,6 +8,15 @@
 ### Security
 ### Misc
 
+## [1.0.3] - 2020-02-16
+
+### Misc
+
+* Better gem description
+* Drop zeitwerk (ran into some issues in a Rails app 😕)
+
+[1.0.3]: https://github.com/carwow/deals_service_client/compare/v1.0.2...v1.0.3
+
 ## [1.0.2] - 2020-02-13
 
 ### Misc
