@@ -15,7 +15,7 @@
 * Better gem description
 * Drop zeitwerk (ran into some issues in a Rails app 😕)
 
-[1.0.3]: https://github.com/carwow/deals_service_client/compare/v1.0.2...v1.0.3
+[1.0.3]: https://github.com/carwow/tenios-api-ruby/compare/v1.0.2...v1.0.3
 
 ## [1.0.2] - 2020-02-13
 
@@ -23,7 +23,7 @@
 
 * Fix gemspec links
 
-[1.0.2]: https://github.com/carwow/deals_service_client/compare/v1.0.1...v1.0.2
+[1.0.2]: https://github.com/carwow/tenios-api-ruby/compare/v1.0.1...v1.0.2
 
 ## [1.0.1] - 2020-02-13
 
@@ -31,7 +31,7 @@
 
 * Ruby 3.0 support
 
-[1.0.1]: https://github.com/carwow/deals_service_client/compare/v1.0.0...v1.0.1
+[1.0.1]: https://github.com/carwow/tenios-api-ruby/compare/v1.0.0...v1.0.1
 
 ## [1.0.0] - 2020-02-12
 
@@ -44,4 +44,4 @@
 
 * Internal refactoring (no breaking changes)
 
-[1.0.0]: https://github.com/carwow/deals_service_client/compare/v0.4.0...v1.0.0
+[1.0.0]: https://github.com/carwow/tenios-api-ruby/compare/v0.4.0...v1.0.0
