@@ -8,6 +8,14 @@
 ### Security
 ### Misc
 
+## [1.0.4] - 2020-02-22
+
+### Fixed
+
+* Relax faraday version constraint
+
+[1.0.4]: https://github.com/carwow/tenios-api-ruby/compare/v1.0.3...v1.0.4
+
 ## [1.0.3] - 2020-02-16
 
 ### Misc

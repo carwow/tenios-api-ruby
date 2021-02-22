@@ -22,7 +22,7 @@ Gem::Specification.new do |spec|
   spec.files = `git ls-files -z`.split("\x0").reject { |f| f.start_with? "spec" }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "faraday", "~> 1.3"
+  spec.add_dependency "faraday", "~> 1.1"
   spec.add_dependency "faraday_middleware", "~> 1.0"
 
   spec.add_development_dependency "pry", "~> 0.14"
