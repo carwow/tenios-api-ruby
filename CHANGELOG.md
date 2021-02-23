@@ -8,7 +8,7 @@
 ### Security
 ### Misc
 
-## [1.0.4] - 2020-02-22
+## [1.0.4] - 2021-02-22
 
 ### Fixed
 
@@ -16,7 +16,7 @@
 
 [1.0.4]: https://github.com/carwow/tenios-api-ruby/compare/v1.0.3...v1.0.4
 
-## [1.0.3] - 2020-02-16
+## [1.0.3] - 2021-02-16
 
 ### Misc
 
@@ -25,7 +25,7 @@
 
 [1.0.3]: https://github.com/carwow/tenios-api-ruby/compare/v1.0.2...v1.0.3
 
-## [1.0.2] - 2020-02-13
+## [1.0.2] - 2021-02-13
 
 ### Misc
 
@@ -33,7 +33,7 @@
 
 [1.0.2]: https://github.com/carwow/tenios-api-ruby/compare/v1.0.1...v1.0.2
 
-## [1.0.1] - 2020-02-13
+## [1.0.1] - 2021-02-13
 
 ### Added
 
@@ -41,7 +41,7 @@
 
 [1.0.1]: https://github.com/carwow/tenios-api-ruby/compare/v1.0.0...v1.0.1
 
-## [1.0.0] - 2020-02-12
+## [1.0.0] - 2021-02-12
 
 ### Changed
 
