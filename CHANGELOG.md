@@ -8,6 +8,15 @@
 ### Security
 ### Misc
 
+## [1.0.5] - 2022-12-21
+
+### Changed
+
+* Relax ruby version constraint to support ruby 3.1
+* Relax faraday version constraint to major v1
+
+[1.0.5]: https://github.com/carwow/tenios-api-ruby/compare/v1.0.3...v1.0.4
+
 ## [1.0.4] - 2021-02-22
 
 ### Fixed
