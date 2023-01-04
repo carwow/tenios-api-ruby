@@ -12,7 +12,7 @@ module Tenios
       def retrieve(date_range, page_size: 100)
         stream do |page|
           payload = build_payload(date_range, page: page, page_size: page_size)
-          client.post("/cdrs/retrieve", payload)
+          client.post("/cdrs/retrieve", **payload)
         end
       end
 
