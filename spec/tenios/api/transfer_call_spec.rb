@@ -10,7 +10,7 @@ module Tenios
       let(:client) { described_class.new(access_key: "test") }
 
       describe "#transfer" do
-        subject(:start) { transfer_call.start(call_uuid: call_uuid, destination: destination) }
+        subject(:transfer) { transfer_call.transfer(call_uuid: call_uuid, destination: destination) }
 
         let(:call_uuid) { SecureRandom.uuid }
         let(:destination) { '+441234567890' }
