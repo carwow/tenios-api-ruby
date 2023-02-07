@@ -32,6 +32,7 @@ module Tenios
       endpoint :verification, :Verification
       endpoint :number, :Number
       endpoint :record_call, :RecordCall
+      endpoint :transfer_call, :TransferCall
 
       # @api private
       def post(path, **payload)
