@@ -1,15 +1,28 @@
 ## [Unreleased]
 
 ### Added
-
-* Support for `/transfer-call` API
-
 ### Changed
 ### Deprecated
 ### Removed
 ### Fixed
 ### Security
 ### Misc
+
+## [1.1.0] - 2023-02-08
+
+### Added
+
+* Support for `/transfer-call` API
+
+[1.1.0]: https://github.com/carwow/tenios-api-ruby/compare/v1.0.6...v1.1.0
+
+## [1.0.6] - 2023-01-04
+
+### Fixed
+
+* Ruby 3.1 support - splat kargs in `CallDetailsRecords#retrieve`
+
+[1.0.6]: https://github.com/carwow/tenios-api-ruby/compare/v1.0.5...v1.0.6
 
 ## [1.0.5] - 2022-12-21
 
@@ -18,7 +31,7 @@
 * Relax ruby version constraint to support ruby 3.1
 * Relax faraday version constraint to major v1
 
-[1.0.5]: https://github.com/carwow/tenios-api-ruby/compare/v1.0.3...v1.0.4
+[1.0.5]: https://github.com/carwow/tenios-api-ruby/compare/v1.0.4...v1.0.5
 
 ## [1.0.4] - 2021-02-22
 
