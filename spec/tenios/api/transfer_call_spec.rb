@@ -13,7 +13,7 @@ module Tenios
         subject(:transfer) { transfer_call.transfer(call_uuid: call_uuid, destination: destination) }
 
         let(:call_uuid) { SecureRandom.uuid }
-        let(:destination) { '+441234567890' }
+        let(:destination) { "+441234567890" }
         let(:response) { {"success" => true} }
         let(:expected_payload) do
           [
