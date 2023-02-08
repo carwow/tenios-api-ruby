@@ -82,7 +82,7 @@ client.record_call.stop(
 #### Transfer
 
 ```ruby
-client.transfer_call.transfer(
+client.transfer_call(
   call_uuid: '9315b018-86bd-424f-a086-7095ce427130',
   destination: '+441234567890'
 )
