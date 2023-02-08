@@ -3,6 +3,7 @@
 require "json"
 require "faraday"
 require "faraday_middleware"
+require_relative "transfer_call"
 
 module Tenios
   module API
@@ -32,7 +33,11 @@ module Tenios
       endpoint :verification, :Verification
       endpoint :number, :Number
       endpoint :record_call, :RecordCall
-      endpoint :transfer_call, :TransferCall
+
+      def transfer_call(...)
+        @transfer_call ||= Tenios::API::TransferCall.new(self)
+        @transfer_call.transfer_call(...)
+      end
 
       # @api private
       def post(path, **payload)

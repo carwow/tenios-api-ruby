@@ -19,7 +19,7 @@ module Tenios
         @client = client
       end
 
-      def transfer(call_uuid:, destination:, destination_type: EXTERNAL_NUMBER)
+      def transfer_call(call_uuid:, destination:, destination_type: EXTERNAL_NUMBER)
         raise "destination_type must be one of #{DESTINATION_TYPES}" unless DESTINATION_TYPES.include?(destination_type)
 
         client.post(

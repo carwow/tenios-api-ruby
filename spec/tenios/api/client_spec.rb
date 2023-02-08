@@ -21,10 +21,6 @@ module Tenios
         it { expect(client.record_call).to be_a(RecordCall) }
       end
 
-      describe "#transfer_call" do
-        it { expect(client.transfer_call).to be_a(TransferCall) }
-      end
-
       describe "#post" do
         let(:http_client) { instance_double(Faraday::Connection, post: response) }
         let(:response) { instance_double(Faraday::Response, body: "body") }

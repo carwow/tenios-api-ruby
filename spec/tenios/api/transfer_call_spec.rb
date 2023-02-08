@@ -5,16 +5,18 @@ require "securerandom"
 module Tenios
   module API
     RSpec.describe Client, "#transfer_call" do
-      subject(:transfer_call) { client.transfer_call }
-
+      subject(:transfer_call) { client.transfer_call(call_uuid: call_uuid, destination: destination) }
       let(:client) { described_class.new(access_key: "test") }
+      let(:call_uuid) { SecureRandom.uuid }
+      let(:destination) { "+441234567890" }
+      let(:response) { {"success" => true} }
 
-      describe "#transfer" do
-        subject(:transfer) { transfer_call.transfer(call_uuid: call_uuid, destination: destination) }
+      before { allow(client).to receive(:post).and_return(response) }
 
-        let(:call_uuid) { SecureRandom.uuid }
-        let(:destination) { "+441234567890" }
-        let(:response) { {"success" => true} }
+      it { expect(transfer_call).to eq response }
+
+      context "HTTP requests" do
+        before { transfer_call }
         let(:expected_payload) do
           [
             "/transfer-call",
@@ -26,15 +28,7 @@ module Tenios
           ]
         end
 
-        before { allow(client).to receive(:post).and_return(response) }
-
-        it { expect(transfer).to eq response }
-
-        context "HTTP requests" do
-          before { transfer }
-
-          it { expect(client).to have_received(:post).with(*expected_payload) }
-        end
+        it { expect(client).to have_received(:post).with(*expected_payload) }
       end
     end
   end
