@@ -1,6 +1,9 @@
 ## [Unreleased]
 
 ### Added
+
+* Support for `/transfer-call` API
+
 ### Changed
 ### Deprecated
 ### Removed

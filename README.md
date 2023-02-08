@@ -75,6 +75,19 @@ client.record_call.stop(
 )
 ```
 
+### Transfer Call
+
+[Tenios documentation](https://www.tenios.de/en/doc/transfer-call-api)
+
+#### Transfer
+
+```ruby
+client.transfer_call(
+  call_uuid: '9315b018-86bd-424f-a086-7095ce427130',
+  destination: '+441234567890'
+)
+```
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/carwow/tenios-api-ruby.
