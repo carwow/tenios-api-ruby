@@ -8,6 +8,13 @@
 ### Security
 ### Misc
 
+## [1.1.1] - 2026-08-14
+
+### Changed
+
+* Drop `faraday_middleware` dependency (deprecated upstream, no Faraday 2 support). `:gzip` now uses the `faraday-gzip` gem instead.
+* Relax `faraday` from `~> 1` to `>= 1, < 3`, allowing Faraday 2.
+
 ## [1.1.0] - 2023-02-08
 
 ### Added

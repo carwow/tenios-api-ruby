@@ -2,7 +2,7 @@
 
 require "json"
 require "faraday"
-require "faraday_middleware"
+require "faraday/gzip"
 require_relative "transfer_call"
 
 module Tenios
@@ -51,7 +51,7 @@ module Tenios
           c.request :json
           c.response :json
           c.response :raise_error
-          c.use :gzip
+          c.request :gzip
 
           c.adapter Faraday.default_adapter
         }
